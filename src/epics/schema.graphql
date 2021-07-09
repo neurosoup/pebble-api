@@ -1,0 +1,18 @@
+type Epic {
+  id: ID!
+  name: String!
+}
+
+type Project {
+  id: ID!
+  name: String
+  epics: [Epic!]
+}
+
+extend type Query {
+  projects: [Project!]
+}
+
+extend type Mutation {
+  createOrUpdateProject(name: String!, id: ID): Project!
+}

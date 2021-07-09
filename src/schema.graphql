@@ -1,0 +1,9 @@
+type Query {
+  # Dummy mutation for schema stitching
+  dummy: Boolean
+}
+
+type Mutation {
+  # Dummy mutation for schema stitching
+  dummy: Boolean
+}

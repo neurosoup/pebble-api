@@ -1,0 +1,49 @@
+{
+  "name": "pebble-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf build && tsc",
+    "watch": "tsc -w",
+    "start": "graphql-codegen -o -w & nodemon",
+    "generate": "VERBOSE=1 graphql-codegen -o -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neurosoup/pebble-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neurosoup/pebble-api/issues"
+  },
+  "homepage": "https://github.com/neurosoup/pebble-api#readme",
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.21.4",
+    "@graphql-codegen/typescript": "^1.22.4",
+    "@octokit/graphql-schema": "^10.53.0",
+    "@types/lodash": "^4.14.171",
+    "@types/uuid": "^8.3.0",
+    "nodemon": "^2.0.9",
+    "rimraf": "^3.0.2",
+    "tsc-watch": "^4.4.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.3.4"
+  },
+  "dependencies": {
+    "@octokit/auth-token": "^2.4.5",
+    "@octokit/core": "^3.5.1",
+    "@octokit/graphql": "^4.6.4",
+    "@octokit/plugin-rest-endpoint-methods": "^5.4.1",
+    "apollo-server-express": "^2.25.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1",
+    "graphql-tools": "^7.0.5",
+    "lodash": "^4.17.21",
+    "uuid": "^8.3.2"
+  }
+}
