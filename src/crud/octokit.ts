@@ -10,6 +10,9 @@ require('dotenv').config();
 
 type CreateOrUpdateFileContentsResponse = RestEndpointMethodTypes['repos']['createOrUpdateFileContents']['response'];
 type GetContentResponse = RestEndpointMethodTypes['repos']['getContent']['response'];
+type GetContentResponseDataUnions = Pick<GetContentResponse, 'data'>['data'];
+const getContentResponseDataInstance: GetContentResponseDataUnions = [];
+type GetContentResponseData = typeof getContentResponseDataInstance[0];
 
 const GITHUB_OWNER = `${process.env.GITHUB_OWNER}`;
 const GITHUB_REPO = `${process.env.GITHUB_REPO}`;
@@ -61,14 +64,16 @@ export class OctokitCrud implements ICrud {
     let baseArray: T[] | undefined = undefined;
 
     try {
-      const baseResponse: any = await this.octokit.rest.repos.getContent({ owner: GITHUB_OWNER, repo: GITHUB_REPO, path: uri });
-      console.log('baseResponse', baseResponse);
-      const baseContent = Buffer.from(baseResponse.data.content, 'base64').toString('utf-8');
-      const base = JSON.parse(baseContent);
-      baseArray = !Array.isArray(base) ? [base] : base;
-      sha = baseResponse.data.sha;
+      const baseResponse: GetContentResponse = await this.octokit.rest.repos.getContent({ owner: GITHUB_OWNER, repo: GITHUB_REPO, path: uri });
+      const baseData = baseResponse.data as GetContentResponseData;
+      if (baseData.content) {
+        const baseContent = Buffer.from(baseData.content, 'base64').toString('utf-8');
+        const base = JSON.parse(baseContent);
+        baseArray = !Array.isArray(base) ? [base] : base;
+        sha = baseData.sha;
+      }
     } catch (e) {
-      // no viable resource found : consider it's a file creation
+      // no viable resource found : so consider it's a file creation
     }
 
     //Eventually update base with data
