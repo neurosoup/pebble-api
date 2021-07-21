@@ -1,6 +1,6 @@
-import { queryResolvers as epicsQueryResolvers, mutationResolvers as epicsMutationResolvers } from './epics/resolvers';
+import { queryResolvers as epicsQueryResolvers, mutationResolvers as epicsMutationResolvers } from './projects';
 
-export const resolvers = {
+export default {
   Query: {
     ...epicsQueryResolvers,
   },

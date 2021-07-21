@@ -15,4 +15,5 @@ extend type Query {
 
 extend type Mutation {
   createOrUpdateProject(name: String!, id: ID): Project!
+  deleteProject(id: ID!): Project!
 }

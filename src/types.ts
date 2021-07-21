@@ -20,6 +20,7 @@ export type Epic = {
 export type Mutation = {
   __typename?: 'Mutation';
   createOrUpdateProject: Project;
+  deleteProject: Project;
   dummy?: Maybe<Scalars['Boolean']>;
 };
 
@@ -27,6 +28,11 @@ export type Mutation = {
 export type MutationCreateOrUpdateProjectArgs = {
   name: Scalars['String'];
   id?: Maybe<Scalars['ID']>;
+};
+
+
+export type MutationDeleteProjectArgs = {
+  id: Scalars['ID'];
 };
 
 export type Project = {

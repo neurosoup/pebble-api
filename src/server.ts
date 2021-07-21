@@ -4,7 +4,7 @@ import { loadSchemaSync } from '@graphql-tools/load';
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
 import { addResolversToSchema } from '@graphql-tools/schema';
 
-import { resolvers } from './resolvers';
+import resolvers from './resolvers';
 import { ICrud, crud } from './crud';
 
 require('dotenv').config();
